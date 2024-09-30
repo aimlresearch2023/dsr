@@ -1,0 +1,8 @@
+-------------- ONE COMMUNICATION --------------
+
+Embedding Models explored:
+  jinaai/jina-embeddings-v2-small-en
+  nomic-ai/nomic-embed-text-v1.5
+
+CHUNKING:
+  https://jina.ai/news/late-chunking-in-long-context-embedding-models/
