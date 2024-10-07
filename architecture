@@ -70,3 +70,33 @@
               +-----------------------------+
               |      Output to User         |
               +-----------------------------+
+
+
+
+    Raw Documents: This is the initial collection of unprocessed data. It could be any set of text documents, which will go through several transformations. These documents form the knowledge base from which the system retrieves relevant information later.
+
+    Text Preprocessing: In this step, the raw documents are cleaned, and unnecessary parts like stopwords are removed. This ensures that the important information remains while making the text easier to process for the following steps. It prepares the documents for chunking and embedding.
+
+    Chunking of Documents: The preprocessed text is broken into smaller, manageable pieces called chunks or passages. These smaller sections make it easier to match a user’s query to specific parts of the document rather than searching through the whole text.
+
+    Embedding of Chunks/Passages: Each chunk is transformed into a numerical vector (embedding) using a model like BERT or SentenceTransformer. This converts the text into a format that can be efficiently compared with the user’s query.
+
+    Store Embeddings into Vector Database: The generated embeddings are stored in a vector database (e.g., FAISS). This allows for fast, approximate matching when searching for relevant passages based on a query.
+
+    User Query/Input: A user's question or query is provided to the system. This is the starting point of the real-time retrieval process.
+
+    Embedding of the Query: The query is transformed into an embedding using the same model that was used for document chunks. This allows the system to compare the query with pre-embedded chunks.
+
+    Lexical Search (e.g., BM25): A keyword-based search method runs in parallel with embedding-based search to retrieve relevant documents based on lexical similarity (e.g., using BM25).
+
+    Compare Query Embedding with Pre-Embedded Docs: The query embedding is compared with the document embeddings stored in the vector database, retrieving the most semantically similar passages.
+
+    Merge and Rerank Retrieved Documents: Results from both lexical and embedding-based searches are merged and reranked using a reranking model (e.g., Cross-Encoder), which fine-tunes the order of results based on relevance.
+
+    Combine Top-Ranked Data: The most relevant passages are combined and organized into a coherent set of data for further processing.
+
+    Feed into LLM/Generator: The top-ranked passages are fed into a language model (e.g., GPT or T5), which interprets them and generates a response that answers the user’s query.
+
+    Generate Answer/Response: The language model generates a final answer or output based on the retrieved information, which is coherent and directly related to the query.
+
+    Output to User: The final response is presented to the user as the system's answer to the query.
