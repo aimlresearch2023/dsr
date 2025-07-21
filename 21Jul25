@@ -1,0 +1,15 @@
+**Current Challenges with SSC:**
+
+Our existing live translation features (text and audio) lack emotional expression. This means translated text offers no emotional context, and synthesized audio sounds flat, failing to convey the speaker's original feelings.
+
+**What We're Working On: Emotion Integration**
+
+Our goal is to enrich the SSC experience by preserving original emotions as is in both text and audio translations.
+
+*   **Phase 1: Emotion-to-Text (via Tags):** We're converting audio to spectrograms and using AST to detect emotions, then adding these emotions as tags to the translated text.
+*   **Phase 2: Emotion-Aware Text-to-Speech (TTS):** We plan to fine-tune a TTS model (e.g., Kokoro 82M) to synthesize speech that accurately reflects the detected emotions from the tags.
+
+**Specific Challenges:**
+
+*   **Dataset for Fine-tuning:** Acquiring suitable emotional datasets for TTS fine-tuning.
+*   **GPU Resources:** Ensuring adequate GPU capacity for model training and operation.
